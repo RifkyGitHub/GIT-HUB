@@ -50,3 +50,15 @@ catatan :
 hash 1 : 8338e852f97cbcf16dc1650d688d776dcb7228ed
 hash 2 : 496ad539bd51cd6c9aa1a59d69ac2fca4f69eac9
 
+
+git reset :
+perumpamaan :
+working directory = kertas kosong
+staging area = kertas berada di meja guru
+commit = kertas di simpan di meja loker guru
+
+mode :
+~ soft = kertas di kembalikan di meja guru artinya Perubahan di kembalikan ke staging index
+~ mixed = kertas di kembalikan ke anak tersebut artinya Perubahan kembali ke working directory
+~ hard = kertas di robek ama guru artinya 
+
