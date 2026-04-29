@@ -1,5 +1,1 @@
 file 2
-git diff : 
-git clean -f : membersihkan peruhabahn pada area working directory
-git restore : mengembalikan peruhabahn pada area working directory
-git restore --staged : mengembalikan area yang sebelumnya staging index -> working directory
