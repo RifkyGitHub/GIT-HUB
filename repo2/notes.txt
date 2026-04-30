@@ -123,6 +123,69 @@ TAG
 git tag : lihat tag
 git tag v1.0 : buat tag
 git push origin v1.0 : push tag
+git tag : melihat semua tag
+git tag nama_tag : membuat tag ringan (lightweight tag)
+git tag v1.0 : contoh membuat tag versi
+
+git tag -a nama_tag -m "pesan" : membuat annotated tag
+git tag -a v1.0 -m "release versi 1.0"
+
+git show nama_tag : melihat detail tag
+git show v1.0
+
+git push origin nama_tag : push 1 tag ke remote
+git push origin v1.0
+
+git push --tags : push semua tag ke remote
+
+git tag -d nama_tag : hapus tag lokal
+git tag -d v1.0
+
+git push origin --delete nama_tag : hapus tag di github / remote
+git push origin --delete v1.0
+
+git checkout nama_tag : pindah ke commit tag (detached HEAD)
+git checkout v1.0
+
+git switch -c branchbaru nama_tag : buat branch dari tag
+git switch -c hotfix-v1 v1.0
+
+========================
+KETERANGAN TAG
+========================
+
+Tag = penanda commit tertentu.
+Biasanya dipakai untuk:
+
+- release versi aplikasi
+- checkpoint penting
+- backup commit penting
+- penanda update stabil
+
+Contoh:
+v1.0 = versi pertama
+v1.1 = update kecil
+v2.0 = update besar
+
+========================
+JENIS TAG
+========================
+
+Lightweight Tag :
+tag biasa, hanya penanda commit
+
+Annotated Tag :
+tag lengkap, ada nama pembuat, tanggal, pesan
+
+========================
+CONTOH ALUR
+========================
+
+git add .
+git commit -m "selesai project"
+git tag -a v1.0 -m "rilis pertama"
+git push
+git push --tags
 
 ========================
 INFO PENTING
