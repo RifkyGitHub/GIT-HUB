@@ -137,6 +137,7 @@ modified : file diubah
 staged : siap commit
 merged : sudah digabung
 conflict : bentrok perubahan saat merge
+git cherry-pick (hash) : Cherry-pick dipakai kalau lu mau pilih commit spesifik, bukan seluruh branch.
 
 ========================
 CATATAN
