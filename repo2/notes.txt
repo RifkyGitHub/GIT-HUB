@@ -8,7 +8,7 @@ vocabulary :
 -m = move / rename
 diff = difference
 init = initialization
-log = riwayatgit 
+log = riwayatgit                                                                                                                                                                                                                                                                            
 staged = area siap commit
 hash = kode unik commit
 
