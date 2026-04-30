@@ -1,52 +1,87 @@
 note :
-(.) titik = keseluruhan
-nama_file = spesifik file tersebut
+(.) titik = keseluruhan / semua file
+nama_file = file tertentu
 
 vocabulary :
 -f = force
-diff = diffrence
+-d = delete
+-m = move / rename
+diff = difference
 init = initialization
+log = riwayatgit 
+staged = area siap commit
+hash = kode unik commit
 
-git config --global --edit : untuk mengedit configurasi secara detail
-git diff : membandingkan perubahan pada file
-git clean -f : membersihkan perubahan pada area working directory
-git restore : mengembalikan perubahan pada area working directory
-git restore --staged : mengembalikan area yang sebelumnya staging index -> working directory
-git log : untuk melihat seluruh riwayat commit
-git log --oneline : sama semerti git log namun lebih ringkas
-git show (code hasnya) : untuk melihat perubahan pada commit
-git diff (code hash 1) (code hash 2) : untuk membandingkan 2 commit secara spesifik
-git commit --amend : untuk reset soft commit sebelumnya
+========================
+DASAR GIT
+========================
+
+git init : membuat repository git baru
+git status : melihat status file / branch saat ini
+git add . : memasukkan semua file ke staging area
+git add nama_file : memasukkan file tertentu ke staging area
+git commit -m "pesan" : menyimpan perubahan ke riwayat commit
+git config --global --edit : mengedit konfigurasi git secara detail
+
+========================
+PERUBAHAN FILE
+========================
+
+git diff : membandingkan perubahan file yang belum di-stage
+git diff --staged : melihat perubahan yang sudah di-stage
+git clean -f : menghapus file untracked di working directory
+git restore . : mengembalikan semua perubahan working directory
+git restore nama_file : mengembalikan file tertentu
+git restore --staged nama_file : mengeluarkan file dari staging ke working directory
+
+========================
+RIWAYAT COMMIT
+========================
+
+git log : melihat seluruh riwayat commit
+git log --oneline : versi ringkas riwayat commit
+git show code_hash : melihat detail commit tertentu
+git diff hash1 hash2 : membandingkan 2 commit spesifik
+
+========================
+BRANCHING
+========================
+
+git branch : melihat daftar branch
+git branch namabranch : membuat branch baru
+git switch namabranch : pindah branch
+git switch -c namabranch : buat branch baru + pindah
+git checkout namabranch : pindah branch / commit
+git checkout -b namabranch : buat branch baru + pindah
+git branch -m namabaru : mengganti nama branch aktif
+git branch -d namabranch : hapus branch lokal yang sudah merge
+git branch -D namabranch : hapus branch lokal paksa
+git branch --delete namabranch : sama seperti -d
+
+========================
+REMOTE / GITHUB
+========================
+
+git remote -v : melihat remote repository
+git remote add origin link_repo : menghubungkan ke github
+git push -u origin main : upload branch main pertama kali
+git push : upload commit terbaru
+git pull : mengambil update dari remote
+git clone link_repo : menyalin repo dari github
+
+========================
+PENTING TAMBAHAN
+========================
+
+git reset --soft hash : mundur commit, perubahan tetap staged
+git reset --mixed hash : mundur commit, perubahan ke working dir
+git reset --hard hash : mundur commit, perubahan hilang
+git rm nama_file : hapus file dan stage penghapusan
+git mv lama baru : rename file
 
 catatan :
-- difftool 83
-- reset commit
+difftool
+reset
 
 hash 1 : 8338e852f97cbcf16dc1650d688d776dcb7228ed
 hash 2 : 496ad539bd51cd6c9aa1a59d69ac2fca4f69eac9
-note :
-(.) titik = keseluruhan
-nama_file = spesifik file tersebut
-
-vocabulary :
--f = force
-diff = diffrence
-init = initialization
-
-git config --global --edit : untuk mengedit configurasi secara detail
-git diff : membandingkan perubahan pada file
-git clean -f : membersihkan perubahan pada area working directory
-git restore : mengembalikan perubahan pada area working directory
-git restore --staged : mengembalikan area yang sebelumnya staging index -> working directory
-git log : untuk melihat seluruh riwayat commit
-git log --oneline : sama semerti git log namun lebih ringkas
-git show (code hasnya) : untuk melihat perubahan pada commit
-git diff (code hash 1) (code hash 2) : untuk membandingkan 2 commit secara spesifik
-
-catatan :
-- difftool 83
-- reset
-
-hash 1 : 8338e852f97cbcf16dc1650d688d776dcb7228ed
-hash 2 : 496ad539bd51cd6c9aa1a59d69ac2fca4f69eac9
-
