@@ -11,6 +11,8 @@ vocabulary :
 -v = verbose (detail)
 -a = all
 -r = remote
+-p = patch
+-s = short
 diff = difference
 init = initialization
 log = riwayat git
@@ -30,7 +32,7 @@ git add . : memasukkan semua file ke staging area
 git add nama_file : memasukkan file tertentu ke staging area
 git add -A : stage semua perubahan
 git commit -m "pesan" : menyimpan perubahan ke riwayat commit
-git commit -am "pesan" : add + commit file yang sudah tracked
+git commit -am "pesan" : add + commit file tracked
 git config --global --edit : edit konfigurasi detail
 git config --global user.name "nama" : set username
 git config --global user.email "email" : set email
@@ -80,6 +82,7 @@ git branch -D namabranch : hapus branch paksa
 git merge namabranch : gabungkan branch ke branch aktif
 git merge --abort : batalkan merge conflict
 git rebase main : pindahkan branch di atas main
+git cherry-pick hash : ambil commit tertentu saja
 
 ========================
 REMOTE / GITHUB
@@ -112,95 +115,67 @@ STASH
 
 git stash : simpan perubahan sementara
 git stash list : lihat daftar stash
-git stash apply : pakai stash terakhir
-git stash pop : pakai stash + hapus dari list
-git stash drop : hapus stash
+git stash show : lihat ringkasan stash terakhir
+git stash show -p : lihat detail stash terakhir
+
+git stash apply : pakai stash terakhir (tidak terhapus)
+git stash apply stash@{0} : pakai stash tertentu
+
+git stash pop : pakai stash terakhir + hapus
+git stash pop stash@{0} : pakai stash tertentu + hapus
+
+git stash push -m "pesan" : stash dengan nama
+git stash push -m "fitur login"
+
+git stash push -u : stash termasuk untracked file
+git stash push -a : stash semua file termasuk ignored
+
+git stash drop : hapus stash terakhir
+git stash drop stash@{0} : hapus stash tertentu
+
+git stash clear : hapus semua stash
+
+git stash branch namabranch : buat branch dari stash
+git stash branch fix-login stash@{0}
+
+Keterangan:
+apply = pakai stash, tapi masih tersimpan
+pop = pakai stash, lalu dihapus
 
 ========================
 TAG
 ========================
 
-git tag : lihat tag
-git tag v1.0 : buat tag
-git push origin v1.0 : push tag
 git tag : melihat semua tag
-git tag nama_tag : membuat tag ringan (lightweight tag)
-git tag v1.0 : contoh membuat tag versi
+git tag nama_tag : membuat lightweight tag
+git tag v1.0 : contoh tag versi
 
 git tag -a nama_tag -m "pesan" : membuat annotated tag
-git tag -a v1.0 -m "release versi 1.0"
+git tag -a v1.0 -m "release pertama"
 
-git show nama_tag : melihat detail tag
-git show v1.0
-
-git push origin nama_tag : push 1 tag ke remote
-git push origin v1.0
-
-git push --tags : push semua tag ke remote
+git show nama_tag : lihat detail tag
+git push origin nama_tag : push 1 tag
+git push --tags : push semua tag
 
 git tag -d nama_tag : hapus tag lokal
-git tag -d v1.0
+git push origin --delete nama_tag : hapus tag remote
 
-git push origin --delete nama_tag : hapus tag di github / remote
-git push origin --delete v1.0
-
-git checkout nama_tag : pindah ke commit tag (detached HEAD)
-git checkout v1.0
-
+git checkout nama_tag : pindah ke commit tag
 git switch -c branchbaru nama_tag : buat branch dari tag
-git switch -c hotfix-v1 v1.0
-
-========================
-KETERANGAN TAG
-========================
-
-Tag = penanda commit tertentu.
-Biasanya dipakai untuk:
-
-- release versi aplikasi
-- checkpoint penting
-- backup commit penting
-- penanda update stabil
-
-Contoh:
-v1.0 = versi pertama
-v1.1 = update kecil
-v2.0 = update besar
-
-========================
-JENIS TAG
-========================
-
-Lightweight Tag :
-tag biasa, hanya penanda commit
-
-Annotated Tag :
-tag lengkap, ada nama pembuat, tanggal, pesan
-
-========================
-CONTOH ALUR
-========================
-
-git add .
-git commit -m "selesai project"
-git tag -a v1.0 -m "rilis pertama"
-git push
-git push --tags
 
 ========================
 INFO PENTING
 ========================
 
-HEAD : posisi sekarang
-main : branch utama
-origin : nama remote default
-tracked file : file yang sudah dikenal git
-untracked file : file baru belum di-add
-modified : file diubah
-staged : siap commit
-merged : sudah digabung
-conflict : bentrok perubahan saat merge
-git cherry-pick (hash) : Cherry-pick dipakai kalau lu mau pilih commit spesifik, bukan seluruh branch.
+HEAD = posisi sekarang
+main = branch utama
+origin = nama remote default
+tracked file = file yang sudah dikenal git
+untracked file = file baru belum di-add
+modified = file diubah
+staged = siap commit
+merged = sudah digabung
+conflict = bentrok perubahan saat merge
 
 ========================
 CATATAN
@@ -211,6 +186,8 @@ reset
 merge conflict
 stash
 rebase
+cherry-pick
+tag
 
 hash 1 : 8338e852f97cbcf16dc1650d688d776dcb7228ed
 hash 2 : 496ad539bd51cd6c9aa1a59d69ac2fca4f69eac9
